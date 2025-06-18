@@ -4,6 +4,12 @@ const database = require('./utils/database');
 
 const port = process.env.PORT || 80;
 
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+
+const identifyRoutes = require('./routes/identify');
+app.use('/', identifyRoutes);
+
 database.on('error', console.error.bind(console, 'connection error: '));
 database.once('open', function () {
     console.log('Database Connected successfully');
