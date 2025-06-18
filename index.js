@@ -1,9 +1,11 @@
 const express = require('express');
+const cors = require('cors');
 const app = express();
 const database = require('./utils/database');
 
 const port = process.env.PORT || 80;
 
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
